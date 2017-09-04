@@ -1,0 +1,28 @@
+.element {
+	border-style:		solid;
+	background-color:	#ff99cc;
+	border-width:		4px;
+	float:				left;
+}
+
+.element_add {
+	border-style:		solid;
+	background-color:	#959595;
+	border-width:		4px;
+	float:				left;
+	height:				400px;
+	width:				200px;
+}
+
+#datapicker {
+	border-style:		solid;
+	background-color:	#f0f0e1;
+	border-width:		2px;
+	position:			absolute;
+	visibility:			hidden;
+}
+
+#workbench {
+	position:			absolute;
+	top:				300px;
+}

@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Element</title>
+	<link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/sizes.css">
+	<script	type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
-	<canvas class="element" id="element1">
+	<!-- in this box, settings of items in a specific element can be edited -->
+	<div class="datapicker" id="datapicker"></div>
+	
+	<!-- preview of the cupboard, the elements with the class "element" can be eddited -->
+	<div class="workbench" id="workbench">
+		<div class="element_add" id="element_left"></div>
+		<div class="element" id="element1"></div>
+		<div class="element" id="element2"></div>
+		<div class="element_add" id="element_right"></div>
 	</div>
+	
+	<!-- box where new items can be chosen -->
+	<div class="additem" id="additem"></div> 
+	
+	<script>init();</script>
 </body>
 </html>
