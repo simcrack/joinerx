@@ -1,29 +1,4 @@
-#element1 {
-	height:	400px;
-	width:	200px;
-}
-
-#element2 {
-	height:	400px;
-	width:	200px;
-}
-
-#element3 {
-	height:	400px;
-	width:	200px;
-}
-
-#element4 {
-	height:	400px;
-	width:	200px;
-}
-
-#element5 {
-	height:	400px;
-	width:	200px;
-}
-
-#element6 {
+.element {
 	height:	400px;
 	width:	200px;
 }

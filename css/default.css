@@ -11,18 +11,22 @@
 	border-width:		4px;
 	float:				left;
 	height:				400px;
-	width:				200px;
+	width:				100px;
 }
 
 #datapicker {
 	border-style:		solid;
 	background-color:	#f0f0e1;
 	border-width:		2px;
+	height:				400px;
+	width:				400px;
 	position:			absolute;
+	top:				0px;
+	left:				800px;
 	visibility:			hidden;
 }
 
 #workbench {
 	position:			absolute;
-	top:				300px;
+	top:				0px;
 }
