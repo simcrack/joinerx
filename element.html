@@ -1,17 +1,21 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Element</title>
+	<meta charset="UTF-8">
+	<title>Element</title>
 	<link rel="stylesheet" href="css/default.css">
 	<link rel="stylesheet" href="css/sizes.css">
 	<script	type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
-	<!-- preview of the cupboard, the elements with the class "element" can be eddited -->
+	<!-- preview of the cupboard, the elements with the class "element" can be edited -->
 	<div class="workbench" id="workbench">
-		<div class="element_add" id="element_left"></div>
-		<div class="element_add" id="element_right"></div>
+		<div id="elements">
+			<input type="submit" id="edit_elements" value="Schrank bearbeiten">
+			<input type="file" id="loadfile" name="file"><input type="submit" onclick="loadFile();" value="Projekt laden"><input type="submit" onclick="saveFile();" value="Projekt speichern">
+		</div><br>
+		<div class="element_add" id="element_left"><p class="element_info">&nbsp;</p></div><div class="element_add" id="element_right"><p class="element_info">&nbsp;</p></div>
 	</div>
 	
 	<br>
@@ -20,8 +24,7 @@
 	<div class="datapicker" id="datapicker"></div>
 	
 	<!-- box where new items can be chosen -->
-	<div class="additem" id="additem"></div> 
-	
+	<div class="additem" id="additem"></div>
 	<script>init();</script>
 </body>
 </html>

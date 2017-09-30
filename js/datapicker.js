@@ -21,7 +21,7 @@ function Datapicker(id){
 		dpDiv.innerHTML = ""; //delete all from datapicker
 		dpDiv.appendChild(curElement.getFormDiv());
 		dpDiv.style.visibility = "visible";
-	}
+	};
 	
 	/*
 	*	saves the data into the element
@@ -38,7 +38,7 @@ function Datapicker(id){
 		
 		//reset the datapicker
 		this.reset();
-	}
+	};
 	
 	/*
 	*	resets the datapicker

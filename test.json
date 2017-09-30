@@ -1,0 +1,1 @@
+{"id":"workbench","elements":[{"id":1,"data":[["intHoehe","integer",0,"Höhe"],["intBreite","integer",0,"Breite"],["intTiefe","integer",0,"Tiefe"],["boRueckwand","boolean",false,"Rückwand"]]}],"data":[["intHoehe","integer",0,"Höhe"],["intBreite","integer",0,"Breite"],["intTiefe","integer",0,"Tiefe"],["boRueckwand","boolean",true,"Rückwand"],["boSockel","boolean",false,"Sockel"]]}

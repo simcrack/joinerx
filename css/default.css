@@ -2,16 +2,26 @@
 	border-style:		solid;
 	background-color:	#ff99cc;
 	border-width:		4px;
-	float:				left;
+	height:				400px;
+	width:				200px;
+	display:			inline-block;
+	white-space:		normal;
 }
 
 .element_add {
 	border-style:		solid;
 	background-color:	#959595;
 	border-width:		4px;
-	float:				left;
 	height:				400px;
 	width:				100px;
+	display:			inline-block;
+	white-space:		normal;
+}
+
+.element_info {
+	font-family:		sans;
+	font-size:			2em;
+	font-weight:		bold;
 }
 
 #datapicker {
@@ -20,13 +30,22 @@
 	border-width:		2px;
 	height:				400px;
 	width:				400px;
-	position:			absolute;
-	top:				0px;
-	left:				800px;
 	visibility:			hidden;
 }
 
 #workbench {
-	position:			absolute;
+	position:			relative;
+	white-space:		nowrap;
+	overflow-x:			auto;
+	overflow-y:			hidden;
 	top:				0px;
+	height:				500px;
+	width:				99%;
+}
+
+#elements {
+	border-width:		4px;
+	border-style:		solid;
+	background-color:	#959595;
+	
 }
