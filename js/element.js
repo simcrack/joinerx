@@ -1,6 +1,6 @@
 /*
 *	class which describes the elements
-*	it represents the element-divs
+*	ir represents the element-divs
 *
 *	@author:	simcrack
 *	@version:	20170930.0
@@ -9,13 +9,15 @@
 function Element(id) {
 	this.id			= id;
 	this.data		= [];
+	this.drawers	= new Drawers(id);
+	var me			= this;
 	var div			= document.createElement("div");
-
+	this.drawers.pushDrawer("tandembox", [["schuHoehe",	matList.arrSchuHoehe,	""],["boBoxside",	"boolean",				false],["boDoppel",		"boolean",				false],["matSchuDo",	matList.arrMatSchuDo,	""],["griffSchuDo",	matList.arrGriffSchuDo,	""],["griffPreis",	"decimal",				0.0]]);
+	
 
 	div.className	= "element";
 	div.id 			= "element" + this.id;
 	div.innerHTML	= '<p class="element_info">&nbsp;</p>'; //inneHTML muss einen Inhalt haben, sonst wird die Position des DIVs unlogisch geändert
-	div.onclick		= function() { workbench.elementClicked(id); };
 	
 	//initialize data array
 	this.data.push(["intHoehe",		"integer", 0,		"Höhe"]);
@@ -42,7 +44,7 @@ function Element(id) {
 				}
 			}
 		}
-	};
+	}
 	
 	/*
 	*	creates and returns a DOM node in which a form is placed with which the data of the element can be edited
@@ -65,19 +67,7 @@ function Element(id) {
 		dpDiv.innerHTML	= formHTML;
 		
 		return dpDiv;
-	};
-	
-	this.getId = function() {
-		return this.id;
-	};
-	
-	this.getDiv = function() {
-		return div;
-	};
-	
-	this.setInnerHTML = function(html) {
-		div.innerHTML = '<p class="element_info">' + html + '</p>';
-	};
+	}
 	
 	/*
 	*	set the data from a JSON object in this object
@@ -86,5 +76,30 @@ function Element(id) {
 	*/
 	this.setDataFromJSON = function(data) {
 		this.data	= data;
-	};
+	}
+	
+	/*
+	*	is called by the "Schubladen" button
+	*	retrieves the datapicker
+	*/
+	this.editDrawers = function() {
+		datapicker.retrieve(this.drawers);
+	}
+	
+	this.getId = function() {
+		return this.id;
+	}
+	
+	this.getDiv = function() {
+		return div;
+	}
+	
+	this.setInnerHTML = function(html) {
+		div.innerHTML = '';		
+		div.innerHTML += '<p class="element_info">' + html + '</p>';
+		div.innerHTML += '<input type="button" id="element_edit_button' + id + '" class="element_edit_button" value="Element bearbeiten">';
+		div.innerHTML += '<input type="button" id="drawers_edit_button' + id + '" class="drawers_edit_button" value="Schubladen bearbeiten">';
+		div.getElementsByClassName("element_edit_button")[0].onclick = function() { workbench.elementClicked(id); }
+		div.getElementsByClassName("drawers_edit_button")[0].onclick = function() { me.editDrawers(); }
+	}
 }

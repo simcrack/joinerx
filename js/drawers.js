@@ -7,15 +7,11 @@
 */
 
 function Drawers(id) {
-	this.id			= id;
+	this.id			= id; //id of the Element in which the drawers set is stored
 	this.data		= [];
-	var div			= document.createElement("div");
-
-	div.className	= "drawers";
-	div.id 			= "drawers" + this.id;
 	
 	//by default there is no data in the drawers object
-	
+		
 	/*
 	*	change values in the data Array
 	*	is called for initializing and changes of the element
@@ -35,7 +31,7 @@ function Drawers(id) {
 				}
 			}
 		}
-	};
+	}
 	
 	/*
 	*	adds a new drawer to the data array
@@ -46,13 +42,22 @@ function Drawers(id) {
 	*						"ausziehtablar"	add an ausziehtablar
 	*						"schuhauszug"	add a tandembox-drawer
 	*			data		an array which shall be stored in the data array of the drawer
-	*			position	"drawer_down"	append the new drawer at the end
-	*						"drawer_up"		inser the new drawer before the ferst
 	*			
 	*/
-	this.pushDrawer = function(data, position = "drawer_down", id = 0) {
-		this.data.push([""]);
-	};
+	this.pushDrawer = function(system, data, id = 0) {
+		if(id === 0)  { id = this.getNextDrawerId(); }
+		var drawer;
+		switch(system) {
+			case "tandembox":
+				drawer = new Tandembox(id);
+				break;
+			
+		default:
+			throwerror("Drawers.pushDrawer", "system", system, "Drawer Type is unkown");
+		}
+		drawer.setData(data);
+		this.data.push([id, drawer]);		
+	}
 	
 	/*
 	*	creates and returns a DOM node in which a form is placed with which the data of the drawer can be edited
@@ -67,26 +72,36 @@ function Drawers(id) {
 		
 		//get inputfield
 		for(var i = 0; i < data_len; i++) {
-			formHTML += framework.generateInputField(this.data[i][0], this.data[i][1], this.data[i][2], this.data[i][3]);
+			dpDiv.appendChild(this.data[i][1].getFormDiv());
 		}
 		formHTML += '<input id="submit" type="submit" value="Speichern" onclick="datapicker.submit()">';
 		formHTML += '<input id="reset" type="reset" value="Abbrechen" onclick="datapicker.reset()">';
-		dpDiv.innerHTML	= formHTML;
+		dpDiv.innerHTML	+= formHTML;
 		
 		return dpDiv;
-	};
+	}
+	
+	/*
+	*	get next free drawer id
+	*
+	*	@return:	number of the new id
+	*/
+	this.getNextDrawerId = function() {
+		var did		= 0;
+		var datalen	= this.data.length;
+
+		//find the highest element id
+		for(var i = 0; i < datalen; i++) {
+			if(did < this.data[i].getId()) {
+				did = this.data[i].getId();
+			}
+		}
+		return did + 1;
+	}
 	
 	this.getId = function() {
 		return this.id;
-	};
-	
-	this.getDiv = function() {
-		return div;
-	};
-	
-	this.setInnerHTML = function(html) {
-		div.innerHTML = '<p class="drawer_info">' + html + '</p>';
-	};
+	}
 	
 	/*
 	*	set the data from a JSON object in this object
@@ -95,5 +110,5 @@ function Drawers(id) {
 	*/
 	this.setDataFromJSON = function(data) {
 		this.data	= data;
-	};
+	}
 }

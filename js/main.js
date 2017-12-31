@@ -2,6 +2,8 @@
 document.writeln("<script type='text/javascript' src='js/framework.js'></script>"); //adds class Datapicker
 document.writeln("<script type='text/javascript' src='js/element.js'></script>"); //adds class Element
 document.writeln("<script type='text/javascript' src='js/elements.js'></script>"); //adds class Elements
+document.writeln("<script type='text/javascript' src='js/drawers.js'></script>"); //adds class Drawers
+document.writeln("<script type='text/javascript' src='js/tandembox.js'></script>"); //adds class Tandembox
 document.writeln("<script type='text/javascript' src='js/datapicker.js'></script>"); //adds class Datapicker
 
 this.reader	= new FileReader(); //is used by loadfile()
@@ -43,7 +45,6 @@ function loadFile() {
 function saveFile() {
 	workbench.saveProject();
 }
-
 
 /*
 *	is replaced by an external call soon...

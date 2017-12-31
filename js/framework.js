@@ -161,5 +161,13 @@ function Framework() {
 		
 		return ret;
 	}
-	
+
+	/*
+	*	"throws" an error (maybe later but at the moment it just shows an error message)
+	*	
+	*	@param	
+	*/
+	this.throwerror = function(origin, variablename, variablevalue, message) {
+		alert("Failure in " + origin + "\n" + message + "\nVariablename " + variablename + "=" + variablevalue)
+	}
 }

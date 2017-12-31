@@ -7,18 +7,18 @@
 *	@version:	20171231.0
 */
 
-function Ausziehtablar(id) {
+function Tandembox(id) {
 	this.id			= id;
 	this.data		= [];
-	var div			= document.createElement("div");
-
+	var type		= "tandembox";
+	
 	//initialize data array
 	this.data.push(["schuHoehe",	matList.arrSchuHoehe,	"",		"Höhe"]);
 	this.data.push(["boBoxside",	"boolean",				false,	"Boxside"]);
 	this.data.push(["boDoppel",		"boolean",				false,	"Doppel"]);
 	this.data.push(["matSchuDo",	matList.arrMatSchuDo,	"",		"Farbe/Material"]);
 	this.data.push(["griffSchuDo",	matList.arrGriffSchuDo,	"",		"Griffprofil"]);
-	this.data.push(["griffSchuDo",	matList.arrGriffSchuDo,	"",		"Griffprofil"]);
+	this.data.push(["griffPreis",	"decimal",				0.0,	"Preis (Griff)"]);
 	
 	/*
 	*	change values in the data Array
@@ -39,7 +39,7 @@ function Ausziehtablar(id) {
 				}
 			}
 		}
-	};
+	}
 	
 	/*
 	*	creates and returns a DOM node in which a form is placed with which the data of the drawer can be edited
@@ -56,16 +56,10 @@ function Ausziehtablar(id) {
 		for(var i = 0; i < data_len; i++) {
 			formHTML += framework.generateInputField(this.data[i][0], this.data[i][1], this.data[i][2], this.data[i][3]);
 		}
-		formHTML += '<input id="submit" type="submit" value="Speichern" onclick="datapicker.submit()">';
-		formHTML += '<input id="reset" type="reset" value="Abbrechen" onclick="datapicker.reset()">';
 		dpDiv.innerHTML	= formHTML;
 		
 		return dpDiv;
-	};
-	
-	this.getId = function() {
-		return this.id;
-	};
+	}
 	
 	/*
 	*	set the data from a JSON object in this object
@@ -74,5 +68,15 @@ function Ausziehtablar(id) {
 	*/
 	this.setDataFromJSON = function(data) {
 		this.data	= data;
-	};
+	}
+	
+	
+	this.getId = function() {
+		return this.id;
+	}
+	
+	this.getType = function() {
+		return type;
+	}
+	
 }

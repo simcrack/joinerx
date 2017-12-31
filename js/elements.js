@@ -13,7 +13,6 @@ function Elements(id) {
 	var me			= this; //in this retarded program language this isnt always a reference of this object
 	var wbDiv		= document.getElementById(this.id); //the DOM-object of the workbench-div
 	
-	
 	//initialize this.data array
 	//um darauf zuzugreifen: workbench.data[0][1] gibt "string"... macht man aber nicht.!!!! bööööööse!!!!
 	this.data.push(["strNummer",	"string",				"",		"Auftragsnummer"]);
@@ -52,7 +51,7 @@ function Elements(id) {
 		
 		//Update Position Text ("e.g. Element 1") in the Eelement DIV
 		this.updateElementHTML();
-	};
+	}
 	
 	
 	/*
@@ -71,7 +70,7 @@ function Elements(id) {
 			}
 		}
 		return eid + 1;
-	};
+	}
 	
 	/*
 	*	event when user clicks on an element loads the datapicker
@@ -80,8 +79,8 @@ function Elements(id) {
 	*/
 	this.elementClicked = function(id) {
 		datapicker.retrieve(this.elements[this.getElementIndexById(id)]); //datapicker.retrieve(id);
-	};
-
+	}
+	
 	/*
 	*	search an element in the elements-array by the id
 	*	returs the array index of the element
@@ -102,16 +101,16 @@ function Elements(id) {
 			}
 		}
 		return eid;
-	};
+	}
 	
 	/*
-	*	is called when the dataüicker shall be displayed for the workbench
+	*	is called when the datapicker shall be displayed for the workbench
 	*/
 	this.editClicked = function(){
 		datapicker.retrieve(me); //datapicker.retrieve(id);
 		var i = JSON.stringify(me);
 
-	};
+	}
 	
 	/*
 	*	change values in the data Array
@@ -132,7 +131,7 @@ function Elements(id) {
 				}
 			}
 		}
-	};
+	}
 	
 	/*
 	*	creates and returns a DOM node in which a form is placed with which the data of the element can be edited
@@ -155,7 +154,7 @@ function Elements(id) {
 		dpDiv.innerHTML	= formHTML;
 		
 		return dpDiv;
-	};
+	}
 	
 	/*
 	*	informs all Elements of their real position
@@ -167,7 +166,7 @@ function Elements(id) {
 		for(var i = 0; i < elements_len; i++){
 			this.elements[i].setInnerHTML("Element " + (i + 1))
 		}
-	};
+	}
 
 	/*
 	*	deletes all elements from the workbench
@@ -180,7 +179,7 @@ function Elements(id) {
         for(var i = 0; i < len; i++) {
             elements[i].parentNode.removeChild(elements[i]);
 		}
-	};
+	}
 
 	/*
 	*	gets an JSON string of the object which is used to save&load the object
@@ -193,7 +192,7 @@ function Elements(id) {
 		var file = new File([JSON.stringify(this)], filename + ".json", {type: 'plain/text'});
 		var url = URL.createObjectURL(file);
 		window.open(url);
-	};
+	}
 	
 	/*
 	*	set the data from a JSON string in this object 
@@ -216,6 +215,6 @@ function Elements(id) {
             var elem_id = this.getElementIndexById(element["id"]);
             this.elements[i].setDataFromJSON(element["data"]);
         }
-	};
+	}
 	
 }
