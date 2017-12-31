@@ -35,7 +35,7 @@ function Element(id) {
 		
 		for(var i = 0; i < data_len; i++) {
 			for(var e = 0; e < val_len; e++) {
-				if(this.data[i][0] == values[e][0] && this.data[i][1] == values[e][1]) {
+				if(this.data[i][0] === values[e][0] && this.data[i][1] === values[e][1]) {
 					this.data[i][2] = values[e][2];
 					break;
 					
@@ -86,5 +86,5 @@ function Element(id) {
 	*/
 	this.setDataFromJSON = function(data) {
 		this.data	= data;
-	}
+	};
 }

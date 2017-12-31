@@ -30,7 +30,7 @@ function Elements(id) {
 	*	@return:	id-number of the new element
 	*/
 	this.pushElement = function(position, id = 0) {
-		if(id == 0)  { id = this.getNextElementId(); }
+		if(id === 0)  { id = this.getNextElementId(); }
 		var element			= new Element(id);
 		var newDiv			= element.getDiv();
 		
@@ -93,7 +93,7 @@ function Elements(id) {
 		
 		//find the element
 		for(var i = 0; i < elemlen; i++) {
-			if (this.elements[i].getId() == id) {
+			if (this.elements[i].getId() === id) {
 				eid = i;
 				break;
 			}
@@ -122,7 +122,7 @@ function Elements(id) {
 		
 		for(var i = 0; i < data_len; i++) {
 			for(var e = 0; e < val_len; e++) {
-				if(this.data[i][0] == values[e][0] && this.data[i][1] == values[e][1]) {
+				if(this.data[i][0] === values[e][0] && this.data[i][1] === values[e][1]) {
 					this.data[i][2] = values[e][2];
 					break;
 					
@@ -177,20 +177,8 @@ function Elements(id) {
         for(var i = 0; i < len; i++) {
             elements[i].parentNode.removeChild(elements[i]);
 		}
-	}
+	};
 
-	this.getId			= function() {
-		return this.id;
-	};
-	
-	this.getDiv			= function() {
-		return this.wbDiv;
-	};
-	
-	this.getProjectName	= function() {
-		return boSockel;
-	};
-	
 	/*
 	*	gets an JSON string of the object which is used to save&load the object
 	*	only variables with "this." are translated into the string
@@ -211,7 +199,7 @@ function Elements(id) {
 	*	@param:		JSON string with data compatibel to the getJSON function
 	*/
 	this.loadProject = function(jsonstring) {
-        this.reset() //delete all divs from the worbensch
+        this.reset(); //delete all divs from the worbensch
 
         jsonobj = JSON.parse(jsonstring);
 		this.id		= jsonobj["id"];
@@ -225,5 +213,5 @@ function Elements(id) {
             var elem_id = this.getElementIndexById(element["id"]);
             this.elements[i].setDataFromJSON(element["data"]);
         }
-	}
+	};
 }

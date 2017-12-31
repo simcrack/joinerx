@@ -4,7 +4,7 @@ document.writeln("<script type='text/javascript' src='js/element.js'></script>")
 document.writeln("<script type='text/javascript' src='js/elements.js'></script>"); //adds class Elements
 document.writeln("<script type='text/javascript' src='js/datapicker.js'></script>"); //adds class Datapicker
 
-this.reader	= new FileReader; //is used by loadfile()
+this.reader	= new FileReader(); //is used by loadfile()
 
 function init() {
 	var e		= document.getElementsByClassName("element_add");
