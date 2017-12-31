@@ -1,27 +1,30 @@
 /*
-*	class which describes the elements
-*	it represents the element-divs
+*	class which describes a drawer
+*	it represents a drawer-line in the drawerist
 *
 *	@author:	simcrack
-*	@version:	20170930.0
+*	@version:	20171231.0
 */
 
+function Drawer(id) {
+	
 function Element(id) {
 	this.id			= id;
 	this.data		= [];
 	var div			= document.createElement("div");
 
 
-	div.className	= "element";
-	div.id 			= "element" + this.id;
-	div.innerHTML	= '<p class="element_info">&nbsp;</p>'; //inneHTML muss einen Inhalt haben, sonst wird die Position des DIVs unlogisch geändert
-	div.onclick		= function() { workbench.elementClicked(id); };
+	div.className	= "drawer";
+	div.id 			= "drawer" + this.id;
+	div.innerHTML	= "<p class="element_info">&nbsp;</p>"; //inneHTML muss einen Inhalt haben, sonst wird die Position des DIVs unlogisch geändert
 	
 	//initialize data array
 	this.data.push(["intHoehe",		"integer", 0,		"Höhe"]);
 	this.data.push(["intBreite",	"integer", 0,		"Breite"]);
 	this.data.push(["intTiefe",		"integer", 0,		"Tiefe"]);
-	this.data.push(["boRueckwand",	"boolean", false,	"Rückwand"]);
+	this.data.push(["boFix",		"boolean", false,	"Fix"]);
+	this.data.push(["boVerstaerkt",	"boolean", false,	"Verstärkt"]);
+	this.data.push(["boOSB",		"boolean", false,	"OSB"]);
 	
 	/*
 	*	change values in the data Array
@@ -45,7 +48,7 @@ function Element(id) {
 	};
 	
 	/*
-	*	creates and returns a DOM node in which a form is placed with which the data of the element can be edited
+	*	creates and returns a DOM node in which a form is placed with which the data of the drawer can be edited
 	*
 	*	@return	a DOM node with a HTML form
 	*/
@@ -58,7 +61,6 @@ function Element(id) {
 		//get inputfield
 		for(var i = 0; i < data_len; i++) {
 			formHTML += framework.generateInputField(this.data[i][0], this.data[i][1], this.data[i][2], this.data[i][3]);
-			formHTML += "<br>";
 		}
 		formHTML += '<input id="submit" type="submit" value="Speichern" onclick="datapicker.submit()">';
 		formHTML += '<input id="reset" type="reset" value="Abbrechen" onclick="datapicker.reset()">';
@@ -76,7 +78,7 @@ function Element(id) {
 	};
 	
 	this.setInnerHTML = function(html) {
-		div.innerHTML = '<p class="element_info">' + html + '</p>';
+		div.innerHTML = '<p class="drawer_info">' + html + '</p>';
 	};
 	
 	/*
