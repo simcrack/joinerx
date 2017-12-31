@@ -12,7 +12,7 @@ function init() {
 	this.loadMatList(); //initialize some global arrays
 
 	for(var i = 0; i < elen; i++) {
-		e[i].onclick = function() { workbench.pushElement(this.id); };
+		e[i].onclick = function() { workbench.values.pushElement(this.id); };
 	}
 	
 	framework	= new Framework();
@@ -53,57 +53,75 @@ function loadMatList() {
 	
 	//["id",	"Bezeichnung"]
 	//Mat Innenschrank
-	matList.arrMatFlaechen	= []; //datatype for datavar
-	matList.arrMatFlaechen.push(["kunhWei",	"Kunstharz weiss"]);
-	matList.arrMatFlaechen.push(["kunhFarb","Kunstharz farbig"]);
-	matList.arrMatFlaechen.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
-	matList.arrMatFlaechen.push(["glas",	"Glas"]);
+	matList.arrMatFlaechen	= {}; //datatype for datavar
+	matList.arrMatFlaechen.name		= "arrMatFlaechen";
+	matList.arrMatFlaechen.values	= [];
+	matList.arrMatFlaechen.values.push(["kunhWei",	"Kunstharz weiss"]);
+	matList.arrMatFlaechen.values.push(["kunhFarb","Kunstharz farbig"]);
+	matList.arrMatFlaechen.values.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
+	matList.arrMatFlaechen.values.push(["glas",	"Glas"]);
 	
 	//Schubladen
 	//Mat Schubladen-Doppel
-	matList.arrMatSchuDo = [];
-	matList.arrMatSchuDo.push(["kunhWei",	"Kunstharz weiss"]);
-	matList.arrMatSchuDo.push(["kunhFarb",	"Kunstharz farbig"]);
-	matList.arrMatSchuDo.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
+	matList.arrMatSchuDo = {};
+	matList.arrMatSchuDo.name	= "arrMatSchuDo";
+	matList.arrMatSchuDo.values	= [];
+	matList.arrMatSchuDo.values.push(["kunhWei",	"Kunstharz weiss"]);
+	matList.arrMatSchuDo.values.push(["kunhFarb",	"Kunstharz farbig"]);
+	matList.arrMatSchuDo.values.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
 	
 	//Schubladenhoehe
-	matList.arrSchuHoehe = [];
-	matList.arrSchuHoehe.push(["niedrig",	"niedrig"]);
-	matList.arrSchuHoehe.push(["mittel",	"mittelhoch"]);
-	matList.arrSchuHoehe.push(["hoch",		"hoch"]);
+	matList.arrSchuHoehe = {};
+	matList.arrSchuHoehe.name	= "arrSchuHoehe";
+	matList.arrSchuHoehe.values	= [];
+	matList.arrSchuHoehe.values.push(["niedrig",	"niedrig"]);
+	matList.arrSchuHoehe.values.push(["mittel",	"mittelhoch"]);
+	matList.arrSchuHoehe.values.push(["hoch",		"hoch"]);
 	
 	//Schubladen Griff wenn noetig
-	matList.arrGriffSchuDo = [];
-	matList.arrGriffSchuDo.push(["ohne",	"ohne"]);
-	matList.arrGriffSchuDo.push(["grProf",	"Griffprofil"]);
-	matList.arrGriffSchuDo.push(["griff",	"Griff"]);
+	matList.arrGriffSchuDo = {};
+	matList.arrGriffSchuDo.name		= "arrGriffSchuDo";
+	matList.arrGriffSchuDo.values	= [];
+	matList.arrGriffSchuDo.values.push(["ohne",	"ohne"]);
+	matList.arrGriffSchuDo.values.push(["grProf",	"Griffprofil"]);
+	matList.arrGriffSchuDo.values.push(["griff",	"Griff"]);
 	
 	
 	//Aufhaengesystem Ausfuehrung (Kleiderstange)
-	matList.arrAufhAusf = [];
-	matList.arrAufhAusf.push(["oval",		"flach-oval"])
-	matList.arrAufhAusf.push(["licht",		"beleuchtet"])
-	matList.arrAufhAusf.push(["oVerchr",	"oval verchromt"])
+	matList.arrAufhAusf = {};
+	matList.arrAufhAusf.name	= "arrAufhAusf";
+	matList.arrAufhAusf.values	= [];
+	matList.arrAufhAusf.values.push(["oval",		"flach-oval"])
+	matList.arrAufhAusf.values.push(["licht",		"beleuchtet"])
+	matList.arrAufhAusf.values.push(["oVerchr",	"oval verchromt"])
 	
 	//Tueren
 	//Tuersysteme
-	matList.arrTuersystem = [];
-	matList.arrTuersystem.push(["imperio",	"Imperio"]);
+	matList.arrTuersystem = {};
+	matList.arrTuersystem.name		= "arrTuersystem";
+	matList.arrTuersystem.values	= [];
+	matList.arrTuersystem.values.push(["imperio", "Imperio"]);
 	
 	//Decken-/Bodenschienen
-	matList.arrTuerSchienen=[];
-	matList.arrTuerSchienen.push(["aluElox","Alu natur eloxiert"]);
+	matList.arrTuerSchienen = {};
+	matList.arrTuerSchienen.name	= "arrTuerSchienen";
+	matList.arrTuerSchienen.values	= [];
+	matList.arrTuerSchienen.values.push(["aluElox",	"Alu natur eloxiert"]);
 	
 	//Griffprofil Tueren
-	matList.arrTuerGriffprofil = [];
-	matList.arrTuerGriffprofil.push(["aluElox",	"Alu natur eloxiert"]);
+	matList.arrTuerGriffprofil = {};
+	matList.arrTuerGriffprofil.name		= "arrTuerGriffprofil";
+	matList.arrTuerGriffprofil.values	= [];
+	matList.arrTuerGriffprofil.values.push(["aluElox", "Alu natur eloxiert"]);
 	
 	//Wandabschluss
-	matList.arrWandabsch = [];
-	matList.arrWandabsch.push(["alu",		"Alu"]);
-	matList.arrWandabsch.push(["kunhWei",	"Kunstharz weiss"]);
-	matList.arrWandabsch.push(["kunhFarb",	"Kunstharz farbig"]);
-	matList.arrWandabsch.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
-	matList.arrWandabsch.push(["apfel",		"Apfel"]);
-	matList.arrWandabsch.push(["spiegel",	"Spiegel"]);
+	matList.arrWandabsch = {};
+	matList.arrWandabsch.name	= "arrWandabsch";
+	matList.arrWandabsch.values	= [];
+	matList.arrWandabsch.values.push(["alu",		"Alu"]);
+	matList.arrWandabsch.values.push(["kunhWei",	"Kunstharz weiss"]);
+	matList.arrWandabsch.values.push(["kunhFarb",	"Kunstharz farbig"]);
+	matList.arrWandabsch.values.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
+	matList.arrWandabsch.values.push(["apfel",		"Apfel"]);
+	matList.arrWandabsch.values.push(["spiegel",	"Spiegel"]);
 };
