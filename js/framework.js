@@ -2,7 +2,7 @@
 *	multiple useful functions
 *
 *	@author:	simcrack
-*	@version:	20170929.0
+*	@version:	20171231.0
 */
 function Framework() {
 	
@@ -31,16 +31,19 @@ function Framework() {
 		var values = [];
 		
 		values.push(node.id);
-		switch(node.type) {
-			case "number":
+		switch(node.className) {
+			case "dtypeInteger":
 				values.push("integer");
 				values.push(node.value);
+			case "dtypeDecimal":
+				values.push("decimal");
+				values.push(node.value);
 				break;
-			case "checkbox":
+			case "dtypeBoolean":
 				values.push("boolean");
 				values.push(node.checked);
 				break;
-			case "text":
+			case "dtypeString":
 				values.push("string");
 				values.push(node.value);
 				break;
@@ -56,13 +59,14 @@ function Framework() {
 	*	generates an input field as string
 	*
 	*	@param:	id			id of the new input field
-	*			datatype	datatype of the value (valid expressions are "number", "boolean", "string")
+	*			datatype	datatype of the value (valid expressions are "integer", "decimal", "boolean", "string")
 	*			data		the initial value/state of the new field
 	*			description	description of the field
 	*	@return:	a string in which the HTML code for the label and the input field is placed in
 	*/
 	this.generateInputField = function(id, datatype, data, description) {
 		var ret			= "";
+		var class_attr	= "";
 		var type_attr	= "";
 		var val_attr	= "";
 		
@@ -71,16 +75,25 @@ function Framework() {
 			case "integer":
 				type_attr	= 'type="number"';
 				val_attr	= 'value="' + data + '"';
+				class_attr	= 'class = "dtypeInteger"';
+				break;
+			case "decimal":
+				type_attr	= 'type="number"';
+				val_attr	= 'value="' + data + '"';
+				class_attr	= 'class = "integer"';
+				class_attr	= 'class = "dtypeDecimal"';
 				break;
 			case "boolean":
 				type_attr	 = 'type="checkbox"';
 				if(data) {
 					val_attr = 'checked';
 				}
+				class_attr	= 'class = "dtypeBoolean"';
 				break;
 			case "string":
 				type_attr	= 'type="text"';
 				val_attr	= 'value="' + data + '"';
+				class_attr	= 'class = "dtypeString"';
 				break;
 			default:
 				type_attr = 'type=""';
@@ -88,7 +101,7 @@ function Framework() {
 		
 		//create string
 		ret += '<label for="' + id + '">' + description + '</label>';
-		ret += '<input id="' + id + '" ' + type_attr + ' ' + val_attr + ' >';
+		ret += '<input id="' + id + '" ' + class_attr + ' ' + type_attr + ' ' + val_attr + ' >';
 		
 		return ret;
 	};

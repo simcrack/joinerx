@@ -1,30 +1,24 @@
 /*
 *	class which describes a drawer
-*	it represents a drawer-line in the drawerist
+*	it represents a drawer line in the drawerlist
+*	the drawer itself would no be loaded by the datapicker but by drawers object which paints all drawer objects line by line
 *
 *	@author:	simcrack
 *	@version:	20171231.0
 */
 
-function Drawer(id) {
-	
-function Element(id) {
+function Ausziehtablar(id) {
 	this.id			= id;
 	this.data		= [];
 	var div			= document.createElement("div");
 
-
-	div.className	= "drawer";
-	div.id 			= "drawer" + this.id;
-	div.innerHTML	= "<p class="element_info">&nbsp;</p>"; //inneHTML muss einen Inhalt haben, sonst wird die Position des DIVs unlogisch geändert
-	
 	//initialize data array
-	this.data.push(["intHoehe",		"integer", 0,		"Höhe"]);
-	this.data.push(["intBreite",	"integer", 0,		"Breite"]);
-	this.data.push(["intTiefe",		"integer", 0,		"Tiefe"]);
-	this.data.push(["boFix",		"boolean", false,	"Fix"]);
-	this.data.push(["boVerstaerkt",	"boolean", false,	"Verstärkt"]);
-	this.data.push(["boOSB",		"boolean", false,	"OSB"]);
+	this.data.push(["schuHoehe",	matList.arrSchuHoehe,	"",		"Höhe"]);
+	this.data.push(["boBoxside",	"boolean",				false,	"Boxside"]);
+	this.data.push(["boDoppel",		"boolean",				false,	"Doppel"]);
+	this.data.push(["matSchuDo",	matList.arrMatSchuDo,	"",		"Farbe/Material"]);
+	this.data.push(["griffSchuDo",	matList.arrGriffSchuDo,	"",		"Griffprofil"]);
+	this.data.push(["griffSchuDo",	matList.arrGriffSchuDo,	"",		"Griffprofil"]);
 	
 	/*
 	*	change values in the data Array
@@ -71,14 +65,6 @@ function Element(id) {
 	
 	this.getId = function() {
 		return this.id;
-	};
-	
-	this.getDiv = function() {
-		return div;
-	};
-	
-	this.setInnerHTML = function(html) {
-		div.innerHTML = '<p class="drawer_info">' + html + '</p>';
 	};
 	
 	/*
