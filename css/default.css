@@ -1,3 +1,7 @@
+html {
+	font-family: 		sans-serif;	
+}
+
 .element {
 	border-style:		solid;
 	background-color:	lightgreen;
@@ -19,9 +23,9 @@
 }
 
 .element_info {
-	font-family:		sans;
 	font-size:			2em;
 	font-weight:		bold;
+	text-align:			center
 }
 
 #datapicker {
@@ -31,6 +35,7 @@
 	height:				400px;
 	width:				400px;
 	visibility:			hidden;
+				
 }
 
 #workbench {
@@ -38,8 +43,8 @@
 	white-space:		nowrap;
 	overflow-x:			auto;
 	overflow-y:			hidden;
-	top:				0px;
-	height:				500px;
+	top:				0;
+	/*height:			500px;*/
 	width:				99%;
 }
 
@@ -48,4 +53,59 @@
 	border-style:		solid;
 	background-color:	#959595;
 	
+}
+
+
+.datapicker div:nth-child(1) {
+	margin-top: 		3%;
+}
+
+.datapicker label {
+	width: 				45%;
+	margin-top: 		2%;
+	display: 			inline-block;
+	text-indent:		5%;
+}
+
+.datapicker input {
+	margin-left: 		2%;
+}
+
+.datapicker select {
+	margin-left: 		2%
+}
+
+.datapicker input[type="number"]{
+	width:				20%;
+	height:				5%
+}
+
+.datapicker input#submit {
+	margin-left:		12%;
+	margin-top:			5%;
+	background-color: 	#4CAF50; /* Green */
+    border: 			none;
+    color: 				white;
+    padding: 			15px 32px;
+    text-align: 		center;
+    text-decoration: 	none;
+    display: 			inline-block;
+    font-size: 			16px;
+}
+
+.datapicker input#reset {
+	margin-left:		5%;
+	margin-top:			5%;
+	background-color: 	#ec3939; /* redish */
+    border: 			none;
+    color: 				white;
+    padding: 			15px 32px;
+    text-align: 		center;
+    text-decoration:	none;
+    display: 			inline-block;
+    font-size: 			16px;
+}
+
+.spacer_sh{
+	height:				0.25rem;
 }
