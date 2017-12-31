@@ -3,28 +3,29 @@
 *	draws an stores 
 *
 *	@oaram:		HTML id of the element
-*	@author:	simcrack
-*	@version:	20170908.0
+*	@author:	simcrack, chleeblatt
+*	@version:	20171231.0
 */
 function Datapicker(id){
 	this.id	= id;
 	
 	var dpDiv = document.getElementById(this.id);
-	var curElement;
+	var curObject;
+	
 	/*
 	*	loads a form for example the form of an element
 	*
-	*	@param:	DOM-element which shall be loaded
+	*	@param:	object which shall be loaded
 	*/
-	this.retrieve = function(element) {
-		curElement = element;
+	this.retrieve = function(object) {
+		curObject = object;
 		dpDiv.innerHTML = ""; //delete all from datapicker
-		dpDiv.appendChild(curElement.getFormDiv());
+		dpDiv.appendChild(curObject.getFormDiv());
 		dpDiv.style.visibility = "visible";
 	};
 	
 	/*
-	*	saves the data into the element
+	*	saves the data into the curObject
 	*/
 	this.submit = function() {
 		var nodes	= dpDiv.querySelectorAll("input");
@@ -34,7 +35,7 @@ function Datapicker(id){
 		for(var i = 0; i < len; i++) {
 			result.push(framework.getFormValue(nodes[i]));
 		}
-		curElement.setData(result);
+		curObject.setData(result);
 		
 		//reset the datapicker
 		this.reset();
