@@ -3,24 +3,27 @@
 *	it represents the workbench-div
 *
 *	@param:
-*	@author:	simcrack
-*	@version:	20170930.0
+*	@author:	simcrack, chleeblatt
+*	@version:	20171231.0
 */
 function Elements(id) {
 	this.id			= id;
 	this.data		= [];
 	this.elements	= [];	//safes the id-numbers of the elements the order of the array ist also the order of the elements
-	var me			= this; //in this retarded program language this isnt alway a reference of this object
+	var me			= this; //in this retarded program language this isnt always a reference of this object
 	var wbDiv		= document.getElementById(this.id); //the DOM-object of the workbench-div
 	
+	
 	//initialize this.data array
-	this.data.push(["strName",		"string",	"",		"Projektname"]);
-	this.data.push(["intHoehe",		"integer",	0,		"Höhe"]);
-	this.data.push(["intBreite",	"integer",	0,		"Breite"]);
-	this.data.push(["intTiefe",		"integer",	0,		"Tiefe"]);
-	this.data.push(["boRueckwand",	"boolean",	false,	"Rückwand"]);
-	this.data.push(["boSockel",		"boolean",	true,	"Sockel"]);
-			
+	//um darauf zuzugreifen: workbench.data[0][1] gibt "string"... macht man aber nicht.!!!! bööööööse!!!!
+	this.data.push(["strNummer",	"string",				"",		"Auftragsnummer"]);
+	this.data.push(["intHoehe",		"integer",				0,		"Gesamt-Höhe"]);
+	this.data.push(["intBreite",	"integer",				0,		"Gesamt-Breite"]);
+	this.data.push(["intTiefe",		"integer",				0,		"Tiefe"]);
+	this.data.push(["boRueckwand",	"boolean",				false,	"Rückwand"]);
+	this.data.push(["boSockel",		"boolean",				true,	"Sockel"]);
+	this.data.push(["matFlaechen",	matList.arrMatFlaechen,	"",		"Material Innenschrank"]);
+		
 	/*
 	*	adds an ne element to the workbench at the defined position
 	*	
@@ -196,10 +199,10 @@ function Elements(id) {
 	*	set the data from a JSON string in this object 
 	*	the JSON string must be compatible with the string from the getJSON function
 	*	
-	*	@param:		JSON string with data compatibel to the getJSON function
+	*	@param:		JSON string with data compatible to the getJSON function
 	*/
 	this.loadProject = function(jsonstring) {
-        this.reset(); //delete all divs from the worbensch
+        this.reset(); //delete all divs from the worbench
 
         jsonobj = JSON.parse(jsonstring);
 		this.id		= jsonobj["id"];
@@ -214,4 +217,5 @@ function Elements(id) {
             this.elements[i].setDataFromJSON(element["data"]);
         }
 	};
+	
 }
