@@ -28,7 +28,7 @@ function Datapicker(id){
 	*	saves the data into the curObject
 	*/
 	this.submit = function() {
-		var nodes	= dpDiv.querySelectorAll("input");
+		var nodes	= dpDiv.querySelectorAll("input,select");
 		var len		= nodes.length;
 		var result	= [];
 		

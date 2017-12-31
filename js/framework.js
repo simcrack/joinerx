@@ -65,13 +65,30 @@ function Framework() {
 	*	@return:	a string in which the HTML code for the label and the input field is placed in
 	*/
 	this.generateInputField = function(id, datatype, data, description) {
+		var len;
 		var ret			= "";
 		var class_attr	= "";
 		var type_attr	= "";
 		var val_attr	= "";
+		var boComplex	= false;
 		
 		//get value and type attribute
 		switch(datatype) {
+			case matList.arrMatFlaechen, matList.arrMatSchuDo,arrSchuHoehe,arrGriffSchuDo,arrAufhAusf,arrTuersystem,arrTuerSchienen,arrTuerGriffprofil,arrWandabsch:
+				ret += '<label for="' + id + '">' + description + '</label>';
+				ret += '<select id="' + id + '"class="' + datatype.name + '">';
+				len = datatype.values.length;
+				for (var i = 0; i < len; i++){
+					if (datatype.values[i][0] === data) {
+						val_attr = " selected";
+					} else {
+						val_attr = "";
+					}
+					ret += '<option value="' + datatype.values[i][0] + '" ' + val_attr + '>' + datatype.values[i][1] + '</option>';
+				}
+				ret += '</select>';
+				boComplex = true;
+				break;
 			case "integer":
 				type_attr	= 'type="number"';
 				val_attr	= 'value="' + data + '"';
@@ -95,13 +112,16 @@ function Framework() {
 				val_attr	= 'value="' + data + '"';
 				class_attr	= 'class = "dtypeString"';
 				break;
+			
 			default:
 				type_attr = 'type=""';
 		}
 		
 		//create string
-		ret += '<label for="' + id + '">' + description + '</label>';
-		ret += '<input id="' + id + '" ' + class_attr + ' ' + type_attr + ' ' + val_attr + ' >';
+		if (boComplex === false) {
+			ret += '<label for="' + id + '">' + description + '</label>';
+			ret += '<input id="' + id + '" ' + class_attr + ' ' + type_attr + ' ' + val_attr + '>';
+		}
 		
 		return ret;
 	};
