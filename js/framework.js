@@ -35,6 +35,7 @@ function Framework() {
 			case "dtypeInteger":
 				values.push("integer");
 				values.push(node.value);
+				break;
 			case "dtypeDecimal":
 				values.push("decimal");
 				values.push(node.value);
@@ -45,6 +46,11 @@ function Framework() {
 				break;
 			case "dtypeString":
 				values.push("string");
+				values.push(node.value);
+				break;
+			case "arrMatFlaechen":		case "arrMatSchuDo": 	case "arrSchuHoehe": 		case "arrGriffSchuDo": case "arrAufhAusf":
+			case "arrTuersystem": 		case "arrTuerSchienen": case "arrTuerGriffprofil":	case "arrWandabsch":
+				values.push(matList[node.className]);
 				values.push(node.value);
 				break;
 			default:
@@ -59,7 +65,7 @@ function Framework() {
 	*	generates an input field as string
 	*
 	*	@param:	id			id of the new input field
-	*			datatype	datatype of the value (valid expressions are "integer", "decimal", "boolean", "string")
+	*			datatype	datatype of the value (valid expressions are "integer", "decimal", "boolean", "string" or a value from the matList (global var))
 	*			data		the initial value/state of the new field
 	*			description	description of the field
 	*	@return:	a string in which the HTML code for the label and the input field is placed in
@@ -74,7 +80,8 @@ function Framework() {
 		
 		//get value and type attribute
 		switch(datatype) {
-			case matList.arrMatFlaechen, matList.arrMatSchuDo,arrSchuHoehe,arrGriffSchuDo,arrAufhAusf,arrTuersystem,arrTuerSchienen,arrTuerGriffprofil,arrWandabsch:
+			case matList.arrMatFlaechen: case matList.arrMatSchuDo: 	case matList.arrSchuHoehe:			case matList.arrGriffSchuDo: case matList.rrAufhAusf:
+			case matList.arrTuersystem:	 case matList.arrTuerSchienen: 	case matList.arrTuerGriffprofil:	case matList.arrWandabsch:
 				ret += '<label for="' + id + '">' + description + '</label>';
 				ret += '<select id="' + id + '"class="' + datatype.name + '">';
 				len = datatype.values.length;
@@ -89,17 +96,20 @@ function Framework() {
 				ret += '</select>';
 				boComplex = true;
 				break;
+				
 			case "integer":
 				type_attr	= 'type="number"';
 				val_attr	= 'value="' + data + '"';
 				class_attr	= 'class = "dtypeInteger"';
 				break;
+				
 			case "decimal":
 				type_attr	= 'type="number"';
 				val_attr	= 'value="' + data + '"';
 				class_attr	= 'class = "integer"';
 				class_attr	= 'class = "dtypeDecimal"';
 				break;
+				
 			case "boolean":
 				type_attr	 = 'type="checkbox"';
 				if(data) {
@@ -107,6 +117,7 @@ function Framework() {
 				}
 				class_attr	= 'class = "dtypeBoolean"';
 				break;
+				
 			case "string":
 				type_attr	= 'type="text"';
 				val_attr	= 'value="' + data + '"';

@@ -10,14 +10,14 @@ function init() {
 	var e		= document.getElementsByClassName("element_add");
 	var elen	= e.length;
 	this.loadMatList(); //initialize some global arrays
-
-	for(var i = 0; i < elen; i++) {
-		e[i].onclick = function() { workbench.values.pushElement(this.id); };
-	}
 	
 	framework	= new Framework();
 	workbench	= new Elements("workbench");
 	datapicker	= new Datapicker("datapicker");
+
+	for(var i = 0; i < elen; i++) {
+		e[i].onclick = function() { workbench.pushElement(this.id); };
+	}
 	
 	//add event listener on the edit div for the workbench
 	document.getElementById("edit_elements").addEventListener("click", workbench.editClicked);
