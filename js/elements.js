@@ -28,8 +28,8 @@ function Elements(id) {
 	*	
 	*	@param: position	'left'	add the new element at the left
 	*						'right'	add the new element at the right
-	*			id			id of the element, if ommitted the next free id is searched and used
-	*	@return:	id-number of the new element
+	*			id			id of the element, if committed the next free id is searched and used
+	*	@return:			id-number of the new element
 	*/
 	this.pushElement = function(position, id = 0) {
 		if(id === 0)  { id = this.getNextElementId(); }

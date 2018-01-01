@@ -1,6 +1,6 @@
 /*
 *	class which describes the elements
-*	ir represents the element-divs
+*	it represents the element-divs
 *
 *	@author:	simcrack
 *	@version:	20170930.0
@@ -10,9 +10,11 @@ function Element(id) {
 	this.id			= id;
 	this.data		= [];
 	this.drawers	= new Drawers(id);
+	this.tablare	= new Tablare(id);
 	var me			= this;
 	var div			= document.createElement("div");
-	this.drawers.pushDrawer("tandembox", [["schuHoehe",	matList.arrSchuHoehe,	""],["boBoxside",	"boolean",				false],["boDoppel",		"boolean",				false],["matSchuDo",	matList.arrMatSchuDo,	""],["griffSchuDo",	matList.arrGriffSchuDo,	""],["griffPreis",	"decimal",				0.0]]);
+	this.drawers.pushDrawer("tandembox", [["schuHoehe",	matList.arrSchuHoehe,	"" ],	["boBoxside",	"boolean",		false],["boDoppel",		"boolean",				false],	["matSchuDo",	matList.arrMatSchuDo,	""],["griffSchuDo",	matList.arrGriffSchuDo,	""],["griffPreis",	"decimal",				0.0]]);
+	this.tablare.pushTablar("newTablar", [["boFixTab",	"boolean",				false],	["boVerstTab",	"boolean",		false],["matFlaechen",	matList.arrMatFlaechen,	""],	["anzTab",		"length",				1]]);
 	
 
 	div.className	= "element";
@@ -60,7 +62,7 @@ function Element(id) {
 		//get inputfield
 		for(var i = 0; i < data_len; i++) {
 			formHTML += framework.generateInputField(this.data[i][0], this.data[i][1], this.data[i][2], this.data[i][3]);
-			formHTML += "<br>";
+			/*formHTML += "<br>";  is already added in framework.js for every field*/
 		}
 		formHTML += '<input id="submit" type="submit" value="Speichern" onclick="datapicker.submit()">';
 		formHTML += '<input id="reset" type="reset" value="Abbrechen" onclick="datapicker.reset()">';
@@ -86,6 +88,14 @@ function Element(id) {
 		datapicker.retrieve(this.drawers);
 	}
 	
+	/*
+	*	is called by the "Tablare" button
+	*	retrieves the datapicker
+	*/
+	this.editTablare = function(){
+		datapicker.retrieve(this.tablare);
+	}
+	
 	this.getId = function() {
 		return this.id;
 	}
@@ -99,7 +109,9 @@ function Element(id) {
 		div.innerHTML += '<p class="element_info">' + html + '</p>';
 		div.innerHTML += '<input type="button" id="element_edit_button' + id + '" class="element_edit_button" value="Element bearbeiten">';
 		div.innerHTML += '<input type="button" id="drawers_edit_button' + id + '" class="drawers_edit_button" value="Schubladen bearbeiten">';
+		div.innerHTML += '<input type="button" id="tablare_edit_button' + id + '" class="tablare_edit_button" value="Tablare bearbeiten">';
 		div.getElementsByClassName("element_edit_button")[0].onclick = function() { workbench.elementClicked(id); }
 		div.getElementsByClassName("drawers_edit_button")[0].onclick = function() { me.editDrawers(); }
+		div.getElementsByClassName("tablare_edit_button")[0].onclick = function() { me.editTablare(); }
 	}
 }

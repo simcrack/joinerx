@@ -5,6 +5,8 @@ document.writeln("<script type='text/javascript' src='js/elements.js'></script>"
 document.writeln("<script type='text/javascript' src='js/drawers.js'></script>"); //adds class Drawers
 document.writeln("<script type='text/javascript' src='js/tandembox.js'></script>"); //adds class Tandembox
 document.writeln("<script type='text/javascript' src='js/datapicker.js'></script>"); //adds class Datapicker
+document.writeln("<script type='text/javascript' src='js/tablare_linda_try.js'></script>"); //adds class Tablare
+document.writeln("<script type='text/javascript' src='js/newTablar_linda_try.js'></script>"); //adds class newTablar
 
 this.reader	= new FileReader(); //is used by loadfile()
 	
@@ -71,6 +73,7 @@ function loadMatList() {
 	matList.arrMatSchuDo.values.push(["kunhFarb",	"Kunstharz farbig"]);
 	matList.arrMatSchuDo.values.push(["kunhNCS",	"Kunstharz NCS lackiert"]);
 	
+	
 	//Schubladenhoehe
 	matList.arrSchuHoehe = {};
 	matList.arrSchuHoehe.name	= "arrSchuHoehe";
@@ -94,14 +97,14 @@ function loadMatList() {
 	matList.arrAufhAusf.values	= [];
 	matList.arrAufhAusf.values.push(["oval",		"flach-oval"])
 	matList.arrAufhAusf.values.push(["licht",		"beleuchtet"])
-	matList.arrAufhAusf.values.push(["oVerchr",	"oval verchromt"])
+	matList.arrAufhAusf.values.push(["oVerchr",		"oval verchromt"])
 	
 	//Tueren
 	//Tuersysteme
 	matList.arrTuersystem = {};
 	matList.arrTuersystem.name		= "arrTuersystem";
 	matList.arrTuersystem.values	= [];
-	matList.arrTuersystem.values.push(["imperio", "Imperio"]);
+	matList.arrTuersystem.values.push(["imperio", 	"Imperio"]);
 	
 	//Decken-/Bodenschienen
 	matList.arrTuerSchienen = {};

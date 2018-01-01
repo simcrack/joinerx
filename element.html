@@ -10,28 +10,34 @@
 </head>
 <body>
 	<!-- preview of the cupboard, the elements with the class "element" can be edited -->
+	<div id="elements">
+		<input type="submit" id="edit_elements" value="Schrank bearbeiten">
+		<input type="file" id="loadfile" name="file"><input type="submit" onclick="loadFile();" value="Projekt laden"><input type="submit" onclick="saveFile();" value="Projekt speichern">
+	</div>
 	<div class="workbench" id="workbench">
-		<div id="elements">
-			<input type="submit" id="edit_elements" value="Schrank bearbeiten">
-			<input type="file" id="loadfile" name="file"><input type="submit" onclick="loadFile();" value="Projekt laden"><input type="submit" onclick="saveFile();" value="Projekt speichern">
-		</div>
-		<div class="spacer_sh">
-		</div>
-		<div class="element_add" id="element_left">
+		<!--<div class="element_add" id="element_left">
 			<p class="element_info">&nbsp;</p>
-			</div><!--
-		--><div class="element_add" id="element_right">
-			<p class="element_info">&nbsp;</p>
-			</div>	
+		</div>-->
+		<div class="element_add" id="element_right">
+			<p class="element_info pseudo_element"> + </p>
+		</div>	
 	</div>
 	
-	<br>
+	<!--<br>-->
 	
 	<!-- in this box, settings of items in a specific element can be edited -->
 	<div class="datapicker" id="datapicker"></div>
 	
 	<!-- box where new items can be chosen -->
 	<div class="additem" id="additem"></div>
+	
+	<!--name of template: "template"+domNode.className-->
+	<template id="templateElement">  <!--defines how a  Element is constructed. -->
+		<div class="element">
+			Tesziuziuzitiuz
+		</div>
+	</template>
+	
 	<script>init();</script>
 </body>
 </html>

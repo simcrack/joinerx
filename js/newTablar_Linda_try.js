@@ -1,24 +1,22 @@
 /*
-*	class which describes a drawer
-*	it represents a drawer line in the drawerlist
-*	the drawer itself would no be loaded by the datapicker but by drawers object which paints all drawer objects line by line
+*	class which describes a tablar
+*	it represents a tablar line in the tablarlist
+*	the tablar itself would no be loaded by the datapicker but by tablare object which paints all tablar objects line by line
 *
 *	@author:	simcrack
 *	@version:	20171231.0
 */
 
-function Tandembox(id) {
+function newTablar(id) {
 	this.id			= id;
 	this.data		= [];
-	var type		= "tandembox";
+	var type		= "newTablar";
 	
 	//initialize data array
-	this.data.push(["schuHoehe",	matList.arrSchuHoehe,	"",		"Höhe"]);
-	this.data.push(["boBoxside",	"boolean",				false,	"Boxside"]);
-	this.data.push(["boDoppel",		"boolean",				false,	"Doppel"]);
-	this.data.push(["matSchuDo",	matList.arrMatSchuDo,	"",		"Material Doppel"]);
-	this.data.push(["griffSchuDo",	matList.arrGriffSchuDo,	"",		"Griff"]);
-	this.data.push(["griffPreis",	"decimal",				0.0,	"Preis (Griff)"]);
+	this.data.push(["boFixTab",		"boolean",				false,	"Tablar fix"]);
+	this.data.push(["boVerstTab",	"boolean",				false,	"Tablar verstärkt"]);
+	this.data.push(["matFlaechen",	matList.arrMatFlaechen,	"",		"Material"]);
+	this.data.push(["anzTab",		"length",				1,		"Anzahl solche Tablare"]);
 	
 	/*
 	*	change values in the data Array

@@ -5,21 +5,27 @@ html {
 .element {
 	border-style:		solid;
 	background-color:	lightgreen;
-	border-width:		4px;
-	height:				400px;
-	width:				200px;
+	border-width:		0.25rem;
+	height:				25rem;
+	width:				12.5rem;
 	display:			inline-block;
 	white-space:		normal;
+	position:			inherit;		/*to leave space to element_add*/
+	left:				7rem;
 }
 
 .element_add {
 	border-style:		solid;
 	background-color:	#959595;
-	border-width:		4px;
-	height:				400px;
-	width:				100px;
+	border-width:		0.25rem;
+	height:				25rem;
+	width:				6.25rem;
 	display:			inline-block;
 	white-space:		normal;
+	position:			absolute;		/*otherwise it jumpes down as soon as an element is added*/
+	left:				0;
+	font-size:			3rem;
+	vertical-align:		center;
 }
 
 .element_info {
@@ -31,11 +37,11 @@ html {
 #datapicker {
 	border-style:		solid;
 	background-color:	#f0f0e1;
-	border-width:		2px;
-	height:				400px;
-	width:				400px;
-	visibility:			hidden;
-				
+	border-width:		0.125rem;
+	height:				25rem;
+	width:				25rem;
+	visibility:			hidden;	
+	margin-top:			1.7rem;
 }
 
 #workbench {
@@ -43,21 +49,25 @@ html {
 	white-space:		nowrap;
 	overflow-x:			auto;
 	overflow-y:			hidden;
-	top:				0;
-	/*height:			500px;*/
+	top:				1.5rem;
+	height:				26.5rem;
 	width:				99%;
 }
 
 #elements {
-	border-width:		4px;
+	border-width:		0.25rem;
 	border-style:		solid;
 	background-color:	#959595;
+	position: 			fixed;			/*sets tasklist fixed (to top) even when scrolling*/
+    top: 				0;
+    left:	 			0.4rem;
+	z-index:			10;				/*sets tasklist to foreground*/
 	
 }
 
 
-.datapicker div:nth-child(1) {
-	margin-top: 		3%;
+.datapicker div:nth-child(1) {			/*refers to first element after div tag (here a label like "höhe") and sets a margin*/
+	margin-top: 		3%;			
 }
 
 .datapicker label {
@@ -67,45 +77,64 @@ html {
 	text-indent:		5%;
 }
 
-.datapicker input {
+.datapicker > div > div label {			/*gilt für alle label im div tag im div tag (Formular) vom Datapicker*/
+	/*margin-top: 		10%;*/
+}
+
+.datapicker input, select {
 	margin-left: 		2%;
 }
 
-.datapicker select {
-	margin-left: 		2%
-}
 
-.datapicker input[type="number"]{
+.datapicker input[type="number"]{		/*nice way to refer to only "number"-input fields*/
 	width:				20%;
 	height:				5%
+}
+
+.datapicker input[type="checkbox"]{		/*nice way to refer to only "number"-input fields*/
+	left:				1rem;
 }
 
 .datapicker input#submit {
 	margin-left:		12%;
 	margin-top:			5%;
-	background-color: 	#4CAF50; /* Green */
+	background-color: 	#4CAF50; 		/* Green */
     border: 			none;
     color: 				white;
-    padding: 			15px 32px;
+    padding: 			1rem 2rem;
     text-align: 		center;
     text-decoration: 	none;
     display: 			inline-block;
-    font-size: 			16px;
+    font-size: 			1rem;
 }
 
 .datapicker input#reset {
 	margin-left:		5%;
 	margin-top:			5%;
-	background-color: 	#ec3939; /* redish */
+	background-color: 	#ec3939; 		/* redish */
     border: 			none;
     color: 				white;
-    padding: 			15px 32px;
+    padding: 			1rem 2rem;
     text-align: 		center;
     text-decoration:	none;
     display: 			inline-block;
-    font-size: 			16px;
+    font-size: 			1rem;
 }
 
-.spacer_sh{
-	height:				0.25rem;
+.element_edit_button,.drawers_edit_button, .tablare_edit_button	{
+	margin-top:			5%;
+	background-color: 	#DCDCDC; 		/* grey */
+    /*border: 			none;*/
+    color: 				black;
+    padding: 			0.5rem 1rem;
+    text-align: 		center;
+    text-decoration: 	none;
+    display: 			inline-block;
+    font-size: 			1rem;
+	margin-left:		0.25rem;
+	/*position: 			absolute;
+    left: 				0;
+    right: 				0;
+	margin-left: 		auto;
+	margin-right: 		auto;*/
 }
